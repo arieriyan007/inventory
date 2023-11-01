@@ -5,7 +5,7 @@ include "../layouts/header.php";
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Laporan Kegiatan IT</h1>
+                        <h1 class="mt-4">Laporan Pekerjaan IT</h1>
                         <ol class="breadcrumb mb-4">
                             <marquee behavior="" direction=""><li class="breadcrumb-item active">Aktivitas pekerjaan selesai</li></marquee>
                         </ol>
@@ -28,35 +28,55 @@ include "../layouts/header.php";
                                         </div>
 
                                         <!-- Modal body -->
-                                        <form method="POST" action="tambahaktiv.php" class="was-validated"> 
+                                        <form method="POST" action="tambahaktiv.php"> 
                                         <div class="modal-body row g-3">
-                                        <div class="col-md-4 position-relative">
+                                        <div class="col-md-4 position-relative was-validated">
                                             <label for="laporan" class="form-label">No Laporan</label>
-                                            <input type="number" class="form-control" id="laporan" required>
-                                            <div class="valid-feedback"> Data sudah terisi</div>
+                                            <input type="number" class="form-control" id="laporan" name="nolap" required>
+                                            <div class="valid-feedback">Ok !!</div>
                                             <div class="invalid-feedback">Data harus berupa angka</div>
                                         </div>
-                                        <div class="col-md-4 position-relative">
+                                        <div class="col-md-4 position-relative was-validated">
                                             <label for="lokasi" class="form-label">Lokasi</label>
-                                            <input type="text" class="form-control" id="lokasi" required>
-                                            <div class="valid-feedback">Lokasi sudah terisi</div>
+                                            <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                                            <div class="valid-feedback">Ok !!</div>
                                             <div class="invalid-feedback">Data harus sesuai instalasi/unit yg dilaporkan</div>
                                         </div>
-                                        <div class="col-md-4 position-relative">
+                                        <div class="col-md-4">
                                            <label for="nama">Nama petugas</label>
-                                           <select name="nama" id="nama">
+                                           <select name="nama" id="nama" class="form-control mt-2">
+                                            <option value=" " selected>- pilih -</option>
                                             <?php 
                                             $data = mysqli_query($koneksi, "SELECT * FROM pegawai");
                                             while ($d = mysqli_fetch_array($data)) {
-                                                $nama = $d['nama_lengkap'];
                                                 $idp = $d['idpeg'];
+                                                $nama = $d['nama_lengkap'];
                                             ?>
-                                                <option value="<?= $idp; ?>"> <?= $nama; ?></option>
+                                                <option value="<?= $idp; ?>"><?= $nama; ?></option>
                                             <?php 
                                             }
                                             ?>
                                            </select>
-                                           </div>
+                                        </div>
+                                        <div class="col-md-4 position-relative was-validated">
+                                            <label for="prihal" class="form-label">Prihal laporan</label>
+                                            <input type="text" class="form-control" id="prihal" name="prihal" required>
+                                            <div class="invalid-feedback">
+                                            Jenis laporan
+                                            </div>
+                                        </div>
+                                        <!-- keterangan menggunakan textarea -->
+                                        <div class="form-floating col-md-8 position-relative">
+                                            <textarea class="form-control mt-4" placeholder="Keterangan" id="floatingTextarea2" style="height: 60px"></textarea>
+                                            <label for="floatingTextarea2" class="mt-4">Keterangan pelaporan pekerjaan :</label>
+                                        </div>
+                                        <div class="col-md-4 position-relative was-validated">
+                                            <label for="kendala" class="form-label">Kendala</label>
+                                            <input type="text" class="form-control" id="kendala" name="kendala" required>
+                                            <div class="invalid-feedback">
+                                            Kendala di lapangan
+                                            </div>
+                                        </div>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
