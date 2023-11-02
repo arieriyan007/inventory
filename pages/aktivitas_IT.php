@@ -28,7 +28,7 @@ include "../layouts/header.php";
                                         </div>
 
                                         <!-- Modal body -->
-                                        <form method="POST" action="tambahaktiv.php"> 
+                                        <form method="POST" action="tambahaktiv.php" enctype="multipart/form-data"> 
                                         <div class="modal-body row g-3">
                                         <div class="col-md-4 position-relative was-validated">
                                             <label for="laporan" class="form-label">No Laporan</label>
@@ -67,7 +67,7 @@ include "../layouts/header.php";
                                         </div>
                                         <!-- keterangan menggunakan textarea -->
                                         <div class="form-floating col-md-8 position-relative">
-                                            <textarea class="form-control mt-4" placeholder="Keterangan" id="floatingTextarea2" style="height: 60px"></textarea>
+                                            <textarea class="form-control mt-4" name="ket" placeholder="Keterangan" id="floatingTextarea2" style="height: 60px"></textarea>
                                             <label for="floatingTextarea2" class="mt-4">Keterangan pelaporan pekerjaan :</label>
                                         </div>
                                         <div class="col-md-4 position-relative was-validated">
@@ -77,10 +77,35 @@ include "../layouts/header.php";
                                             Kendala di lapangan
                                             </div>
                                         </div>
+                                        <div class="col-md-4 position-relative was-validated">
+                                            <label for="evaluasi" class="form-label">Evaluasi</label>
+                                            <input type="text" class="form-control" id="evaluasi" name="evaluasi" required>
+                                            <div class="invalid-feedback">
+                                            Evaluasi yang disampaikan dilapangan !
+                                            </div>
+                                        </div>
+                                        <div class="form-floating col-md-4">
+                                            <input type="date" id="tglSelesai" class="form-control mt-4" name="tglSelesai" required>
+                                            <label for="tglSelesai" class="mt-4">Tanggal Selesai :</label>
+                                        </div>
+                                        <div class="col-md-3 was-validated">
+                                        <label for="Status" class="form-label">Status pekerjaan :</label>
+                                        <select class="form-select" name="status" required aria-label="select example">
+                                            <option value=""> - pilih - </option>
+                                            <option value="Selesai">Selesai</option>
+                                            <option value="Pending">Pending</option>
+                                            </select>
+                                            <div class="invalid-feedback">silahkan pilih status pekerjaan saat ini</div>
+                                        </div>
+                                        <!-- memasukkan gambar img -->
+                                        <div class="col-md-4 was-validated">
+                                            <label for="Img">Masukkan foto :</label>
+                                            <input type="file" name="img" id="Img" class="form-control mt-2" required>
+                                        </div>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="button" name="addAktiv" class="btn btn-danger" data-bs-dismiss="modal">Simpan</button>
+                                            <button type="button" name="addAktiv" class="btn btn-outline-info" data-bs-dismiss="modal"><b>Simpan</b></button>
                                         </div>
                                        
                                         </form>
