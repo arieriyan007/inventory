@@ -114,6 +114,7 @@ include "../layouts/header.php";
                                     }
 
                                     while ($kl = mysqli_fetch_array($datakeluar)) {
+                                        $idb        = $kl['idbarang'];
                                         $idk        = $kl['idkeluar'];
                                         $tanggal    = $kl['tanggal'];
                                         $namabarang = $kl['namabarang'];
@@ -175,6 +176,9 @@ include "../layouts/header.php";
                                                                     <div class="col-md-4">
                                                                         <label for="Jumlah">Jumlah barang :</label>
                                                                         <input type="number" id="Jumlah" name="qty" value="<?= $qty; ?>" class="form-control mt-2 mb-2">
+                                                                        <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                                        <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                                        <input type="hidden" name="nmbarang" value="<?= $namabarang; ?>">
                                                                     </div>
                                                                 </div>       
                                                             </div>
