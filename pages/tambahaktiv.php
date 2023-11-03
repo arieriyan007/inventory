@@ -1,19 +1,19 @@
 <?php 
 include "../koneksi.php";
 
-if (isset($_POST['addAktiv'])) {
+if (isset($_POST['addAktivitas'])) {
     $nolap      = $_POST['nolap'];
     $lokasi     = $_POST['lokasi'];
     $nama       = $_POST['nama'];
     $prihal     = $_POST['prihal'];
     $ket        = $_POST['ket'];
-    $kon        = $_POST['kendala'];
+    $ken        = $_POST['kendala'];
     $evaluasi   = $_POST['evaluasi'];
     $tselesai   = $_POST['tglSelesai'];
     $status     = $_POST['status'];
 
      // tambah file gambar
-     $allow_extention = array ('png', 'jpg', 'heic');
+     $allow_extention = array ('png','jpg','heic');
      $nama = $_FILES['file']['name'];
      $dot = explode('.', $nama);
      $ekstensi = strtolower(end($dot));
@@ -23,46 +23,45 @@ if (isset($_POST['addAktiv'])) {
  
      $image = md5(uniqid($nama, true) . time()). '.'.$ekstensi;
  
-     // validasi no inventory saat input tida boleh ada yg sama
-     $cek = mysqli_query($koneksi, "SELECT * FROM aktivitas_lap WHERE idlap='$'");
+     // validasi no laporan saat diinput tidak boleh ada yg sama
+     $cek = mysqli_query($koneksi, "SELECT * FROM aktivitas_lap WHERE no_lap='$nolap' ");
      $hitung = mysqli_num_rows($cek);
  
      if ($hitung < 1) {
          if (in_array($ekstensi, $allow_extention) === true) {
              // validasi ukuran file
-             if ($ukuran < 10000000) {
-                 move_uploaded_file($file_tmp, '../assets/img/' .$image);
-                 $tambahinv = mysqli_query($koneksi, "INSERT INTO inventory(no_inventory, namabarang, merk, tgl_pembelian, instalasi, image) VALUES 
-                 ('$noinv', '$nmbarang', '$merk', '$tglP', '$inst', '$image') ");
+             if ($ukuran < 3000000) {
+                 move_uploaded_file($file_tmp, '../assets/img_laporan/' .$image);
+                 $tambah = mysqli_query($koneksi, "INSERT INTO aktivitas_lap (idpeg, no_lap, lokasi, nama_laporan, keterangan, kendala, evaluasi, tgl_selesai, status, image) VALUES ('$nama', '$nolap', '$lokasi', '$prihal', '$ket', '$ken', '$evaluasi', '$tselesai', '$status', '$image') ");
  
                  // jika ada barang maka tidak tersimpan kedatabase
-                 if ($tambahinv) {
-                     header("location:inventory.php?pesan=berhasildiTambah");
+                 if ($tambah) {
+                     header("location:aktivitas_IT.php?pesan=LaporanberhasildiTambah");
                  } else {
                      echo "<script>
-                     alert ('Data gagal ditambahkan !');
-                     window.location.href='inventory.php';
+                     alert ('Data laporan gagal ditambahkan !');
+                     window.location.href='aktivitas_IT.php';
                      </script>";
                  }
              } else {
-                 // notifikasi jika file lebih dari 10Mb
+                 // notifikasi jika file lebih dari 3Mb
                  echo "<script>
-                 alert ('Ukuran file terlalu besar maksimal 10Mb !');
-                 window.location.href='inventory.php';
+                 alert ('Ukuran file terlalu besar maksimal 3Mb !');
+                 window.location.href='aktivitas_IT.php';
                  </script>";
              }
          } else {
              // notifikasi file bukan gambar/image
              echo "<script>
-             alert ('File harus berupa jpg atau png !');
-             window.location.href='inventory.php';
+             alert ('File harus berupa jpg, png, atau heic !');
+             window.location.href='aktivitas_IT.php';
              </script>";
          }
      } else {
-         // notifikasi jika no inventory ada
+         // notifikasi jika no laporan ada
          echo "<script>
-         alert ('No inventory sudah ada ! silahkan masukkan no inventory yang baru');
-         window.location.href='inventory.php';
+         alert ('No Laporan sudah ada ! silahkan masukkan no laporan yang baru');
+         window.location.href='aktivitas_IT.php';
          </script>";
      }
 }

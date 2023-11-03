@@ -114,10 +114,11 @@ include "../layouts/header.php";
                                     }
 
                                     while ($kl = mysqli_fetch_array($datakeluar)) {
-                                    $tanggal    = $kl['tanggal'];
-                                    $namabarang = $kl['namabarang'];
-                                    $qty        = $kl['qty'];
-                                    $penerima   = $kl['penerima'];
+                                        $idk        = $kl['idkeluar'];
+                                        $tanggal    = $kl['tanggal'];
+                                        $namabarang = $kl['namabarang'];
+                                        $qty        = $kl['qty'];
+                                        $penerima   = $kl['penerima'];
 
                                     // menampilkan gambar
                                     $gambar     = $kl['image'];
@@ -137,36 +138,51 @@ include "../layouts/header.php";
                                             <td><?= $qty; ?></td>
                                             <td><?= $penerima; ?></td>
                                             <td>
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idk; ?>">
                                                 <i class="fas fa-edit"></i> Edit
                                                 </button>
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
-                                                <input type="hidden" name="idbarangnya" value="<?= $idb; ?>">
+                                                <input type="hidden" name="idkeluarnya" value="<?= $idk; ?>">
 
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idk; ?>">
                                                 <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
 
                                             <!-- Edit Modal -->
-                                            <div class="modal fade" id="edit<?= $idb; ?>">
+                                            <div class="modal fade" id="edit<?= $idk; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
                                                         <!-- Modal Header Edit-->
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Edit Data Barang</h4>
+                                                            <h4 class="modal-title">Edit barang <?= $namabarang; ?></h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
 
                                                         <!-- Modal body Edit -->
                                                         <form method="POST" action="#">
                                                         <div class="modal-body">
-                                                            <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control" autofocus required="required">
-                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control mt-2 mb-2">
-                                                            <!-- <input type="number" name="stock" value="<?= $stock; ?>" class="form-control mb-2" required> -->
+                                                            <div class="card" style="width: 100%;">
+                                                                <div style="text-align: center;" class="mt-2">
+                                                                <?= $img; ?>
+                                                                </div>
+                                                                <div class="card-body row g-2">
+                                                                    <div class="col-md-8">
+                                                                        <label for="Penerima">Penerima barang :</label>
+                                                                        <input type="text" id="Penerima" name="penerima" value="<?= $penerima; ?>" class="form-control mt-2 mb-2">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="Jumlah">Jumlah barang :</label>
+                                                                        <input type="number" id="Jumlah" name="qty" value="<?= $qty; ?>" class="form-control mt-2 mb-2">
+                                                                    </div>
+                                                                </div>       
+                                                            </div>
 
-                                                            <button type="submit" class="btn btn-primary" name="updatebarang">Simpan</button>
+                                                            <!-- Edit footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="submit" name="updateEdit" class="btn btn-outline-warning" data-bs-dismiss="modal">Update</button>
+                                                            </div>
                                                         </div>
                                                         </form>
                                                         </div>

@@ -62,7 +62,7 @@ include "../layouts/header.php";
                                             <label for="prihal" class="form-label">Prihal laporan</label>
                                             <input type="text" class="form-control" id="prihal" name="prihal" required>
                                             <div class="invalid-feedback">
-                                            Jenis laporan
+                                            Jenis nama laporan
                                             </div>
                                         </div>
                                         <!-- keterangan menggunakan textarea -->
@@ -90,7 +90,7 @@ include "../layouts/header.php";
                                         </div>
                                         <div class="col-md-3 was-validated">
                                         <label for="Status" class="form-label">Status pekerjaan :</label>
-                                        <select class="form-select" name="status" required aria-label="select example">
+                                        <select class="form-select" name="status" required>
                                             <option value=""> - pilih - </option>
                                             <option value="Selesai">Selesai</option>
                                             <option value="Pending">Pending</option>
@@ -105,7 +105,7 @@ include "../layouts/header.php";
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="button" name="addAktiv" class="btn btn-outline-info" data-bs-dismiss="modal"><b>Simpan</b></button>
+                                            <button type="submit" name="addAktivitas" class="btn btn-outline-info" data-bs-dismiss="modal"><b>Simpan</b></button>
                                         </div>
                                        
                                         </form>
