@@ -19,13 +19,13 @@ if (isset($_POST['updateEdit'])) {
     $qtysaatini = $qtynya['qty'];
 
     // logika stock diatas dibuat ke if 
-    if ($qty > $qtysaatini) {
+    if ($qty>$qtysaatini) {
         // maka hitung selisih qtynya
         $selisih = $qty-$qtysaatini;
         $kurangin = $stocksekarang - $selisih;
 
         // membuat validation/notifikasi jika QTY sudah mendekati barang habis
-        if ($selisih <= $qtysaatini) {
+        if ($selisih <= $stocksekarang) {
             // maka operasinya 
             $kuranginstock = mysqli_query($koneksi, "UPDATE stock SET stock='$kurangin' WHERE idbarang='$idb' ");
             $updatestock = mysqli_query($koneksi, "UPDATE keluar SET qty='$qty', penerima='$penerima' WHERE idkeluar='$idk' ");
@@ -35,7 +35,7 @@ if (isset($_POST['updateEdit'])) {
                 header("location:keluar.php?pesan=updatekeluarberhasil");
             } else {
                 echo "<script>
-                alert ('Edit data barang <?= $nmbarang; ?> !');
+                alert ('Edit data barang $nmbarang !');
                 window.location.href='keluar.php';
                 </script>";
             }
