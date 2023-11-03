@@ -51,10 +51,10 @@ if (isset($_POST['updateEdit'])) {
         // operasinya
         $tambahkan = $stocksekarang + $selisih;
         $tambahkanstock = mysqli_query($koneksi, "UPDATE stock SET stock='$tambahkan' WHERE idbarang='$idb' ");
-        $stockbaru = mysqli_query($koneksi, "UPDATE keluar SET qty='$qty', penerima='$penerima' WHERE idkeluar='$idk' ");
+        $updatestock = mysqli_query($koneksi, "UPDATE keluar SET qty='$qty', penerima='$penerima' WHERE idkeluar='$idk' ");
 
         // jika logika diatas benar maka halaman akan dialihkan ke halaman baru
-        if ($tambahkanstock&&$stockbaru) {
+        if ($tambahkanstock&&$updatestock) {
             header("location:keluar.php?pesan=updatekeluarberhasil");
         } else {
             echo "<script>

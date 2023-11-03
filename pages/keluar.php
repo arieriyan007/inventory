@@ -162,7 +162,7 @@ include "../layouts/header.php";
                                                         </div>
 
                                                         <!-- Modal body Edit -->
-                                                        <form method="POST" action="#">
+                                                        <form method="POST" action="edit_keluar.php">
                                                         <div class="modal-body">
                                                             <div class="card" style="width: 100%;">
                                                                 <div style="text-align: center;" class="mt-2">
