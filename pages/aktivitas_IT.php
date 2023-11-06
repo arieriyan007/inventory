@@ -45,7 +45,7 @@ include "../layouts/header.php";
                                         <div class="col-md-4">
                                            <label for="">Nama petugas</label>
                                            <select name="nama" id="nama" class="form-control mt-2">
-                                            <option value="" selected>- pilih -</option>
+                                            
                                             <?php 
                                             $datapegawai = mysqli_query($koneksi, "SELECT * FROM pegawai");
                                             while ($d = mysqli_fetch_array($datapegawai)) {
@@ -99,8 +99,8 @@ include "../layouts/header.php";
                                         </div>
                                         <!-- memasukkan gambar img -->
                                         <div class="col-md-4 was-validated">
-                                            <label for="Img">Masukkan foto :</label>
-                                            <input type="file" name="file" id="Img" class="form-control mt-2" required>
+                                            <label for="img">Masukkan foto :</label>
+                                            <input type="file" name="img" id="img" class="form-control mt-2" required>
                                         </div>
                                         </div>
                                         <!-- Modal footer -->
@@ -136,12 +136,27 @@ include "../layouts/header.php";
                                     // panggil database
                                     $data = mysqli_query($koneksi,"SELECT * FROM aktivitas_lap");
                                     while ($d = mysqli_fetch_array($data)) {
+                                        $nolap = $d['no_lap'];
+                                        $lokasi = $d['lokasi'];
+                                        $tgl_lap = $d['tgl_start'];
+                                        $status = $d['status'];
+                                        $tgl_selesai = $d['tgl_selesai'];
+
+                                        $gambar = $d['image'];
+                                        if ($gambar == null) {
+                                            $img = 'No Gambar';
+                                        } else {
+                                            $img = '<img src="../assets/img_laporan/'.$gambar.'" width="100" height="100" >';
+                                        }
                                     ?>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                        <tr class=" ">
+                                            <td><?= $nolap; ?></td>
+                                            <td><?= $img; ?></td>
+                                            <td><?= $lokasi; ?></td>
+                                            <td><?= $tgl_lap; ?></td>
+                                            <td><?= $status; ?></td>
+                                            <td><?= $tgl_selesai; ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
                                                 <i class="fas fa-edit"></i> Edit
@@ -149,7 +164,7 @@ include "../layouts/header.php";
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idbarangnya" value="<?= $idb; ?>">
 
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
+                                                <button type="button" class="btn btn-danger btn-sm my-1" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
                                                 <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
