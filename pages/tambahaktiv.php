@@ -21,7 +21,7 @@ if (isset($_POST['addAktivitas'])) {
      $ukuran = $_FILES['file']['size'];
      $file_tmp = $_FILES['file']['tmp_name'];
  
-     $image = md5(uniqid($nama, true) . time()). '.'.$ekstensi;
+     $image = $nama = true . time(). '.'.$ekstensi;
  
      // validasi no laporan saat diinput tidak boleh ada yg sama
      $cek = mysqli_query($koneksi, "SELECT * FROM aktivitas_lap WHERE no_lap='$nolap' ");
@@ -32,7 +32,8 @@ if (isset($_POST['addAktivitas'])) {
              // validasi ukuran file
              if ($ukuran < 3000000) {
                  move_uploaded_file($file_tmp, '../assets/img_laporan/' .$image);
-                 $tambah = mysqli_query($koneksi, "INSERT INTO aktivitas_lap (idpeg, no_lap, lokasi, nama_laporan, keterangan, kendala, evaluasi, tgl_selesai, status, image) VALUES ('$nama', '$nolap', '$lokasi', '$prihal', '$ket', '$ken', '$evaluasi', '$tselesai', '$status', '$image') ");
+                 $tambah = mysqli_query($koneksi, "INSERT INTO aktivitas_lap (idpeg, no_lap, lokasi, nama_laporan, keterangan, kendala, evaluasi, tgl_selesai, status, image) VALUES 
+                 ('$nama', '$nolap', '$lokasi', '$prihal', '$ket', '$ken', '$evaluasi', '$tselesai', '$status', '$image')");
  
                  // jika ada barang maka tidak tersimpan kedatabase
                  if ($tambah) {
@@ -57,6 +58,7 @@ if (isset($_POST['addAktivitas'])) {
              window.location.href='aktivitas_IT.php';
              </script>";
          }
+
      } else {
          // notifikasi jika no laporan ada
          echo "<script>

@@ -92,7 +92,7 @@ if (!isset($_SESSION['log'])) {
                     </form>
                   </div>
                   <div class="card-footer text-center py-3">
-                    <div class="small"><a href="https://arieriyan007.github.io">Support By Arieriyan</a></div>
+                    <div class="small"><a href="https://arieriyan007.github.io">Support By Tim IT</a></div>
                   </div>
                 </div>
               </div>

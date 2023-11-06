@@ -43,12 +43,12 @@ include "../layouts/header.php";
                                             <div class="invalid-feedback">Data harus sesuai instalasi/unit yg dilaporkan</div>
                                         </div>
                                         <div class="col-md-4">
-                                           <label for="nama">Nama petugas</label>
+                                           <label for="">Nama petugas</label>
                                            <select name="nama" id="nama" class="form-control mt-2">
-                                            <option value=" " selected>- pilih -</option>
+                                            <option value="" selected>- pilih -</option>
                                             <?php 
-                                            $data = mysqli_query($koneksi, "SELECT * FROM pegawai");
-                                            while ($d = mysqli_fetch_array($data)) {
+                                            $datapegawai = mysqli_query($koneksi, "SELECT * FROM pegawai");
+                                            while ($d = mysqli_fetch_array($datapegawai)) {
                                                 $idp = $d['idpeg'];
                                                 $nama = $d['nama_lengkap'];
                                             ?>
@@ -100,7 +100,7 @@ include "../layouts/header.php";
                                         <!-- memasukkan gambar img -->
                                         <div class="col-md-4 was-validated">
                                             <label for="Img">Masukkan foto :</label>
-                                            <input type="file" name="img" id="Img" class="form-control mt-2" required>
+                                            <input type="file" name="file" id="Img" class="form-control mt-2" required>
                                         </div>
                                         </div>
                                         <!-- Modal footer -->

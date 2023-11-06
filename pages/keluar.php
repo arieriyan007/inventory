@@ -144,8 +144,8 @@ include "../layouts/header.php";
                                                 </button>
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idkeluarnya" value="<?= $idk; ?>">
-
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idk; ?>">
+                                                
+                                                <button type="button" class="btn btn-danger btn-sm my-1" data-bs-toggle="modal" data-bs-target="#delete<?= $idk; ?>">
                                                 <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
@@ -195,7 +195,7 @@ include "../layouts/header.php";
                                                     <!-- Akhir edit -->
 
                                                     <!-- Delete Modal -->
-                                                    <div class="modal fade" id="delete<?= $idb; ?>">
+                                                    <div class="modal fade" id="delete<?= $idk; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
@@ -206,11 +206,32 @@ include "../layouts/header.php";
                                                         </div>
 
                                                         <!-- Modal body Delete -->
-                                                        <form method="POST" action="#">
+                                                        <form method="POST" action="delete_keluar.php">
                                                         <div class="modal-body">
-                                                            Apakah Ada yakin ingin menghapus <?= $namabarang; ?> ?
-                                                            <br>
-                                                            <button type="submit" class="btn btn-danger mt-2" name="deletebarang">Delete</button>
+                                                        <div class="card mb-3" style="max-width: 540px;">
+                                                            <div class="row g-0">
+                                                                <div class="col-md-4 d-flex justify-content-center" style="width: 100px;">
+                                                                <?= $img; ?>
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title text-center"><?= $namabarang; ?></h5>
+                                                                    <hr>
+                                                                    <p class="card-text text-center">Jumlah : <?= $qty; ?></p>
+                                                                    <hr>
+                                                                    <p class="card-text text-center"><small class="text-muted"><?= $tanggal; ?></small></p>
+
+                                                                    <!-- input dengan type hidden -->
+                                                                    <input type="hidden" name="idk" value="<?= $idk; ?>">
+                                                                    <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                                    <input type="hidden" name="qty" value="<?= $qty; ?>">
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-secondary" name="deletebarang">Delete</button>
+                                                        </div>
                                                         </div>
                                                         </form>
                                                         </div>
