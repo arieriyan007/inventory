@@ -136,7 +136,9 @@ include "../layouts/header.php";
                                     // panggil database
                                     $data = mysqli_query($koneksi,"SELECT * FROM aktivitas_lap");
                                     while ($d = mysqli_fetch_array($data)) {
+                                        $idl    = $d['idlap'];
                                         $nolap = $d['no_lap'];
+                                        $namalap = $d['nama_laporan'];
                                         $lokasi = $d['lokasi'];
                                         $tgl_lap = $d['tgl_start'];
                                         $status = $d['status'];
@@ -158,26 +160,34 @@ include "../layouts/header.php";
                                             <td><?= $status; ?></td>
                                             <td><?= $tgl_selesai; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
-                                                <i class="fas fa-edit"></i> Edit
-                                                </button>
+                                                <?php 
+                                                if ($status=='Pending') {
+                                                    echo '<button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#selesai'.$idl.'">
+                                                    <i class="fas fa-hourglass-end"></i> Selesai
+                                                    </button>';
+                                                } else {
+                                                    // jika status selesai
+                                                    echo '';
+                                                }
+                                                ?>
+                                               
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idbarangnya" value="<?= $idb; ?>">
 
-                                                <button type="button" class="btn btn-danger btn-sm my-1" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
-                                                <i class="fas fa-trash"></i> Delete
+                                                <button type="button" class="btn btn-warning btn-sm my-1" data-bs-toggle="modal" data-bs-target="#print<?= $idl; ?>">
+                                                <i class="fas fa-print"></i> Print
                                                 </button>
                                             </td>
                                         </tr>
 
                                                     <!-- Edit Modal -->
-                                                    <div class="modal fade" id="edit<?= $idb; ?>">
+                                                    <div class="modal fade" id="selesai<?= $idl; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
                                                         <!-- Modal Header Edit-->
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Edit Data Barang</h4>
+                                                            <h4 class="modal-title">Pending pekerjaan</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
 
@@ -185,14 +195,9 @@ include "../layouts/header.php";
                                                         <!-- menambahkan enctype="multipart/form-data" -->
                                                         <form method="POST" action="editIndex.php"  enctype="multipart/form-data">
                                                         <div class="modal-body">
-                                                            <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control" autofocus required="required">
-                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control mt-2 mb-2">
-                                                            <input type="number" name="stock" value="<?= $stock; ?>" class="form-control" disabled>
-                                                            <input type="text" name="satuan" value="<?= $satuan; ?>" class="form-control my-2">
-                                                            <input type="file" name="file" id="gambar" class="form-control my-2">
-                                                            <div class="invalid-feedback">Silahkan upload gambar !</div>
-                                                            <!-- lakukan parshing id barang -->
-                                                            <input type="hidden" name="idb" value="<?= $idb; ?>">
+                                                            <p>Apakah yakin pekerjaan <?= $namalap; ?> sudah selesai</p>
+                                                            <!-- lakukan parshing id lapangan -->
+                                                            <input type="hidden" name="idl" value="<?= $idl; ?>">
 
                                                             <button type="submit" class="btn btn-primary" name="updatebarang">Update</button>
                                                         </div>
