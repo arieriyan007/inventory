@@ -135,7 +135,7 @@ include "../layouts/header.php";
                                             <td><?= $no++; ?></td>
                                             <td><?= $img; ?></td>
                                             <td><?= $namabarang; ?></td>
-                                            <td><?= $tanggal; ?></td>
+                                            <td><?= date('d-m-Y', strtotime($tanggal)); ?></td>
                                             <td><?= $qty; ?></td>
                                             <td><?= $penerima; ?></td>
                                             <td>
@@ -144,7 +144,7 @@ include "../layouts/header.php";
                                                 </button>
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idkeluarnya" value="<?= $idk; ?>">
-                                                
+
                                                 <button type="button" class="btn btn-danger btn-sm my-1" data-bs-toggle="modal" data-bs-target="#delete<?= $idk; ?>">
                                                 <i class="fas fa-trash"></i> Delete
                                                 </button>
@@ -174,7 +174,7 @@ include "../layouts/header.php";
                                                                         <input type="text" id="Penerima" name="penerima" value="<?= $penerima; ?>" class="form-control mt-2 mb-2">
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <label for="Jumlah">Jumlah barang :</label>
+                                                                        <label for="Jumlah">Barang keluar:</label>
                                                                         <input type="number" id="Jumlah" name="qty" value="<?= $qty; ?>" class="form-control mt-2 mb-2">
                                                                         <input type="hidden" name="idk" value="<?= $idk; ?>">
                                                                         <input type="hidden" name="idb" value="<?= $idb; ?>">

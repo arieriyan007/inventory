@@ -196,6 +196,7 @@ include "../layouts/header.php";
                                                         <form method="POST" action="editIndex.php"  enctype="multipart/form-data">
                                                         <div class="modal-body">
                                                             <p>Apakah yakin pekerjaan <?= $namalap; ?> sudah selesai</p>
+                                                            
                                                             <!-- lakukan parshing id lapangan -->
                                                             <input type="hidden" name="idl" value="<?= $idl; ?>">
 

@@ -98,7 +98,11 @@ include "../cek.php";
                             <div class="sb-sidenav-menu-heading">Laporan</div>
                             <a class="nav-link" href="aktivitas_IT.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
-                                Laporan pekerjaan IT
+                                Form pekerjaan IT
+                            </a>
+                            <a class="nav-link" href="perawatan.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-signature"></i></div>
+                                Form perawatan komputer
                             </a>
                             <!-- <a class="nav-link" href="">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
