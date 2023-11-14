@@ -91,7 +91,7 @@ include "../layouts/header.php";
                                     // panggil database
                                     $user = mysqli_query($koneksi,"SELECT * FROM login");
                                     while ($u = mysqli_fetch_array($user)) {
-                                    $idb    = $u['iduser'];
+                                    $idu    = $u['iduser'];
                                     $uname  = $u['username'];
                                     $pass   = $u['password']; 
                                     ?>
@@ -101,26 +101,26 @@ include "../layouts/header.php";
                                             <td><?= $uname; ?></td>
                                             <td><?= $pass; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idb; ?>">
+                                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idu; ?>">
                                                 <i class="fas fa-edit"></i> Edit
                                                 </button>
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idbarangnya" value="<?= $idb; ?>">
 
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idb; ?>">
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idu; ?>">
                                                 <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
                                         </tr>
 
                                                     <!-- Edit Modal -->
-                                                    <div class="modal fade" id="edit<?= $idb; ?>">
+                                                    <div class="modal fade" id="edit<?= $idu; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
                                                         <!-- Modal Header Edit-->
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Edit Data Barang</h4>
+                                                            <h4 class="modal-title">Edit data user</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
 
@@ -147,22 +147,23 @@ include "../layouts/header.php";
 
                                                     <!-- Delete -->
                                                     <!-- Delete Modal -->
-                                                    <div class="modal fade" id="delete<?= $idb; ?>">
+                                                    <div class="modal fade" id="delete<?= $idu; ?>">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
 
                                                         <!-- Modal Header Delete-->
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title">Info Delete Barang</h4>
+                                                            <h4 class="modal-title">Info hapus data user</h4>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                                         </div>
 
                                                         <!-- Modal body Delete -->
-                                                        <form method="POST" action="tambah_barang.php">
+                                                        <form method="POST" action="delete_user.php">
                                                         <div class="modal-body">
-                                                            Apakah Ada yakin ingin menghapus <?= $namabarang; ?> ?
+                                                            Apakah Ada yakin ingin menghapus user <?= $uname; ?> ?
+                                                            <input type="hidden" name="idu" value="<?= $idu; ?>">
                                                             <br>
-                                                            <button type="submit" class="btn btn-danger mt-2" name="deletebarang">Delete</button>
+                                                            <button type="submit" class="btn btn-danger mt-2" name="deleteuser">Delete</button>
                                                         </div>
                                                         </form>
                                                         </div>
