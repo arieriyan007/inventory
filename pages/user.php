@@ -101,9 +101,6 @@ include "../layouts/header.php";
                                             <td><?= $uname; ?></td>
                                             <td><?= $pass; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idu; ?>">
-                                                <i class="fas fa-edit"></i> Edit
-                                                </button>
                                                     <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                                 <input type="hidden" name="idbarangnya" value="<?= $idb; ?>">
 
@@ -112,38 +109,6 @@ include "../layouts/header.php";
                                                 </button>
                                             </td>
                                         </tr>
-
-                                                    <!-- Edit Modal -->
-                                                    <div class="modal fade" id="edit<?= $idu; ?>">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-
-                                                        <!-- Modal Header Edit-->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Edit data user</h4>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                        </div>
-
-                                                        <!-- Modal body Edit -->
-                                                        <!-- menambahkan enctype="multipart/form-data" -->
-                                                        <form method="POST" action="editIndex.php"  enctype="multipart/form-data">
-                                                        <div class="modal-body">
-                                                            <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control" autofocus required="required">
-                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control mt-2 mb-2">
-                                                            <input type="number" name="stock" value="<?= $stock; ?>" class="form-control" disabled>
-                                                            <input type="text" name="satuan" value="<?= $satuan; ?>" class="form-control my-2">
-                                                            <input type="file" name="file" id="gambar" class="form-control my-2">
-                                                            <div class="invalid-feedback">Silahkan upload gambar !</div>
-                                                            <!-- lakukan parshing id barang -->
-                                                            <input type="hidden" name="idb" value="<?= $idb; ?>">
-
-                                                            <button type="submit" class="btn btn-primary" name="updatebarang">Update</button>
-                                                        </div>
-                                                        </form>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <!-- Akhir edit -->
 
                                                     <!-- Delete -->
                                                     <!-- Delete Modal -->
