@@ -131,7 +131,7 @@ include "../layouts/header.php";
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="submit" name="addAktivitas" class="btn btn-outline-info" data-bs-dismiss="modal"><b>Simpan</b></button>
+                                            <button type="submit" name="addperawatan" class="btn btn-outline-info" data-bs-dismiss="modal"><b>Simpan</b></button>
                                         </div>
                                        
                                         </form>

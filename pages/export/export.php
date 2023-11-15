@@ -1,6 +1,6 @@
 <?php
-include "../koneksi.php";
-include "../cek.php";
+include "../../koneksi.php";
+include "../../cek.php";
 ?>
 
 <html>
