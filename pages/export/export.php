@@ -15,7 +15,15 @@ include "../../cek.php";
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
-
+<style>
+        .zoomable {
+            width: 100px;
+        }
+        .zoomable:hover {
+            transform: scale(2);
+            transition: 0.8s ease;
+        }
+    </style>
 <body>
 <div class="container">
 			<h2 class="text-center mt-4">Stock barang</h2>
@@ -53,7 +61,7 @@ include "../../cek.php";
                       $img = 'No Gambar';
                     } else {
                       // jika ada gambar
-                      $img = '<img src="../assets/img/' .$gambar. ' " class="zoomable">'; //zoomable disini saya membuat costume css dibagian header.php
+                      $img = '<img src="../../assets/img' .$gambar. ' " class="zoomable">'; //zoomable disini saya membuat costume css dibagian header.php
                     }
                   ?>
 
