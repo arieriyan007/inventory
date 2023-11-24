@@ -28,7 +28,7 @@ include "../layouts/header.php";
                                 </button>
 
                                 <!-- membuat export file -->
-                                    <a href="export/exportInv.php" class="btn btn-success" target="_blank" title="Data laporan"><i class="fas fa-file-export"></i> Export data</a>
+                                    <a href="export/exportinventory.php" class="btn btn-success" target="_blank" title="Data laporan"><i class="fas fa-file-export"></i> Export data</a>
                                 <!-- akhir export file -->
 
                                 <!-- The Modal -->
@@ -126,6 +126,7 @@ include "../layouts/header.php";
                                             <td><?= $tgl; ?></td>
                                             <td><?= $inst; ?></td>
                                             <td>
+                                                <div class="row g-3 inliner">
                                                 <!-- button mutasi barang -->
                                                 <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#mutasi<?= $idv; ?>">
                                                     <i class="fas fa-exchange-alt"></i> Mutasi
@@ -134,9 +135,13 @@ include "../layouts/header.php";
                                                 <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#rusak<?= $idv; ?>">
                                                     <i class="fas fa-wrench"></i> rusak
                                                 </button>
+                                                <!-- button barang rusak -->
+                                                <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#print<?= $idv; ?>">
+                                                    <i class="fas fa-print"></i> print kartu
+                                                </button>
                                                 <!-- membuat agar mengedit atau mendelete berdasarkan idbarang -->
                                             <input type="hidden" name="idvnya" value="<?= $idv; ?>">
-
+                                            </div>
                                             </td>
                                         </tr>
 
