@@ -13,6 +13,8 @@ include "../cek.php";
         <meta name="author" content="" />
         <title>Stock Barang - IT</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <!-- icon url -->
+        <link rel="shortcut icon" href="../assets/logo/logo.png">
         <!-- link pdf -->
         <link rel="stylesheet" href="../js/pdf.js">
         <link href="../css/styles.css" rel="stylesheet" />
