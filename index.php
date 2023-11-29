@@ -40,6 +40,7 @@ if (!isset($_SESSION['log'])) {
     <meta name="author" content="" />
     <title>Login - Aplikasi Stock Barang</title>
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="assets/logo/logo.png">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   </head>
   <body class="bg-primary">
