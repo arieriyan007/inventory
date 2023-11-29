@@ -1,6 +1,27 @@
 <?php 
 include "../koneksi.php";
 include "../cek.php";
+
+// menambahkan timeout didalam aplikasi agar logout otomatis
+$timeout = 24; //setting timeout dalam menit
+$logout = "../index.php"; //redirect halaman logout
+
+$timeout = $timeout * 1440; //menit ke detik
+if (isset($_SESSION['start_session'])) {
+    $elapsed_time = time()-$_SESSION['start_session'];
+    if ($elapsed_time >= $timeout) {
+        session_destroy();
+        echo "<script>
+        alert ('Sesi telah berakhir');
+        window.location='$logout';
+        </script>";
+    }
+}
+$_SESSION['start_session']=time();
+
+// refresh otomatis
+$respon = "refresh";
+$waktu = 1440;
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +31,7 @@ include "../cek.php";
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
+        <meta http-equiv="<?= $respon; ?>" content="<?= $waktu; ?>">
         <meta name="author" content="" />
         <title>Stock Barang - IT</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />

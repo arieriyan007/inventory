@@ -40,7 +40,7 @@ if (!isset($_SESSION['log'])) {
     <meta name="author" content="" />
     <title>Login - Aplikasi Stock Barang</title>
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="assets/logo/logo.png">
+    <link rel="shortcut icon" href="assets/logo/logo.ico">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   </head>
   <body class="bg-primary">
@@ -107,9 +107,9 @@ if (!isset($_SESSION['log'])) {
             <div class="d-flex align-items-center justify-content-between small">
               <div class="text-muted">Copyright &copy; https://arieriyan007.github.io</div>
               <div>
-                <a href="https://areiriyan007.github.io">Support By</a>
+                <a href="https://arieriyan007.github.io">Support By</a>
                 &middot;
-                <a href="https://areiriyan007.github.io">Arieriyan &amp; Tim</a>
+                <a href="https://arieriyan007.github.io">Arieriyan &amp; Tim</a>
               </div>
             </div>
           </div>
